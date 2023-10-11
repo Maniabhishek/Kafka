@@ -8,9 +8,10 @@
 > - n Apache Kafka, a sender is known as a producer who publishes messages, and a receiver is known as a consumer who consumes that message by subscribing it.
 
 ### What is Streaming process
-> - A streaming process is the processing of data in parallelly connected systems.
+> - It is the processing of data in parallelly connected systems.
 > - This process allows different applications to limit the parallel execution of the data
 > - where one record executes without waiting for the output of the previous record. Therefore, a distributed streaming platform enables the user to simplify the task of the streaming process and parallel execution. Therefore, a streaming platform in Kafka has the following key capabilities:
 >> - As soon as the streams of records occur, it processes it.
 >> - It works similar to an enterprise messaging system where it publishes and subscribes streams of records.
 >> - It stores the streams of records in a fault-tolerant durable way.
+![kafaka clustor](https://static.javatpoint.com/tutorial/kafka/images/apache-kafka-tutorial-1.png)
