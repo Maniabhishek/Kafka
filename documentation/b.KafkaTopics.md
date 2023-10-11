@@ -11,6 +11,7 @@
 > - Each message gets stored into partitions with an incremental id known as its Offset value.
 > - The order of the offset value is guaranteed within the partition only and not across the partition. The offsets for a partition are infinite.
 <img width="350" alt="partition" src="https://github.com/Maniabhishek/Kafka/assets/31520295/84bf4778-c7a6-4d90-8c56-dde7f6647b6d">
+
 > - Suppose, a topic containing three partitions 0,1 and 2. Each partition has different offset numbers. The data is distributed among each offset in each partition where data in offset 1 of Partition 0 does not have any relation with the data in offset 1 of Partition1. But, data in offset 1of Partition 0 is inter-related with the data contained in offset 2 of Partition0
 
 ### Broker
