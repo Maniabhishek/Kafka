@@ -11,6 +11,9 @@
 > - It is the processing of data in parallelly connected systems.
 > - This process allows different applications to limit the parallel execution of the data
 
+### Streams 
+> - An event stream represents related events in motion.
+
 > - where one record executes without waiting for the output of the previous record. Therefore, a distributed streaming platform enables the user to simplify the task of the streaming process and parallel execution. Therefore, a streaming platform in Kafka has the following key capabilities:
 >> - As soon as the streams of records occur, it processes it.
 >> - It works similar to an enterprise messaging system where it publishes and subscribes streams of records.
