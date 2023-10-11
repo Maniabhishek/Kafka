@@ -17,3 +17,9 @@
 
 >> - It stores the streams of records in a fault-tolerant durable way.
 <img width="400" alt="kafka cluster" src="https://github.com/Maniabhishek/Kafka/assets/31520295/a314c484-21f7-4673-a228-636973b91d4a">
+
+### Four core apis
+> - Producer API: This api allows to publish stream of records to one or more topics
+> - Consumer API: This API allows an application to subscribe one or more topics and process the stream of records produced to them.
+> - Streams API: This API allows an application to effectively transform the input streams to the output streams. It permits an application to act as a stream processor which consumes an input stream from one or more topics, and produce an output stream to one or more output topics.
+> - Connector API: This API executes the reusable producer and consumer APIs with the existing data systems or applications.
