@@ -14,6 +14,7 @@
 > - where one record executes without waiting for the output of the previous record. Therefore, a distributed streaming platform enables the user to simplify the task of the streaming process and parallel execution. Therefore, a streaming platform in Kafka has the following key capabilities:
 >> - As soon as the streams of records occur, it processes it.
 >> - It works similar to an enterprise messaging system where it publishes and subscribes streams of records.
+<img width="200" alt="Screenshot 2023-10-11 at 1 48 40 PM" src="https://github.com/Maniabhishek/Kafka/assets/31520295/a314c484-21f7-4673-a228-636973b91d4a">
 
 >> - It stores the streams of records in a fault-tolerant durable way.
 ![kafaka clustor](https://github.com/Maniabhishek/Kafka/assets/31520295/0a102878-877b-4c34-ba95-8b967adfcd34)
