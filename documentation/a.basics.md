@@ -16,4 +16,4 @@
 >> - It works similar to an enterprise messaging system where it publishes and subscribes streams of records.
 
 >> - It stores the streams of records in a fault-tolerant durable way.
-<img width="300" alt="kafka cluster" src="https://github.com/Maniabhishek/Kafka/assets/31520295/a314c484-21f7-4673-a228-636973b91d4a">
+<img width="400" alt="kafka cluster" src="https://github.com/Maniabhishek/Kafka/assets/31520295/a314c484-21f7-4673-a228-636973b91d4a">
