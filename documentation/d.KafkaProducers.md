@@ -32,9 +32,9 @@
 ### Let's see an example
 > - Suppose, a producer writes data to Broker1, Broker 2, and Broker 3.
 >> - Case1: Producer sends data to each of the Broker, but not receiving any acknowledgment. Therefore, there can be a severe data loss, and the correct data could not be conveyed to the consumers.
->> - <img width="421" alt="image" src="https://github.com/Maniabhishek/Kafka/assets/31520295/92c725b9-481a-4a18-b9de-fd6887b805f6">
+>> - <img width="350" alt="image" src="https://github.com/Maniabhishek/Kafka/assets/31520295/92c725b9-481a-4a18-b9de-fd6887b805f6">
 >> - Case 2: The producers send data to the brokers. Broker 1 holds the leader. Thus, the leader asks Broker 1 whether it has successfully received data. After receiving the Broker's confirmation, the leader sends the feedback to the Producer with ack=1.
->> - <img width="504" alt="image" src="https://github.com/Maniabhishek/Kafka/assets/31520295/2c3e0380-c733-4474-8a49-bf0a8439a0e2">
+>> - <img width="350" alt="image" src="https://github.com/Maniabhishek/Kafka/assets/31520295/2c3e0380-c733-4474-8a49-bf0a8439a0e2">
 >> - Case3: The producers send data to each broker. Now, the leader and its replica/ISR will ask their respective brokers about the data. Finally, acknowledge the producer with the feedback.
->> - <img width="524" alt="image" src="https://github.com/Maniabhishek/Kafka/assets/31520295/3dfd328a-45af-4d62-90ed-82b739109754">
+>> - <img width="350" alt="image" src="https://github.com/Maniabhishek/Kafka/assets/31520295/3dfd328a-45af-4d62-90ed-82b739109754">
 
