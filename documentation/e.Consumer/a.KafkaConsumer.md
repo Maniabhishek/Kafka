@@ -23,3 +23,4 @@
 ### Example 2
 > - Consider another scenario where a consumer group has three consumers. Consumer 1 and Consumer 2 are present in an active state. Consumer 1 is reading data from Partition 0 and Consumer 2 from Partition 1. As, there are only two topic-partitions available, but three consumers. Thus, Consumer 3 will remain in an inactive state until any of the active consumer leaves.
 > - <img width="350" alt="image" src="https://github.com/Maniabhishek/Kafka/assets/31520295/bed1d87c-7f8f-4db3-8081-01218e4b40f8">
+> - In this Example, three consumers are present in one group only. That's why Consumer 3 is inactive. However, if the consumer is present in another group, it will be in an active state and able to read the data.
