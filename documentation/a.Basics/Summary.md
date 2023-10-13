@@ -7,3 +7,9 @@
 
 ### Streams
 - An event stream represents related events in motion
+
+### Four Core APIs
+- Producer API
+- Consumer API
+- Stream API
+- 
