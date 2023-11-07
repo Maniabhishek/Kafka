@@ -32,18 +32,21 @@ func NewKafkaConsumer(broker messageconfig.BrokerConfig, groupId string, topics 
 }
 
 // function to read message from kafka topics, need to explicity commit messages
-func (k *KafkaConsumer) FetchMessage() {
+func (k *KafkaConsumer) FetchMessage(callback func(messageconfig.EventMessage, error) ([]byte, error)) {
 	ctx := context.Background()
 	for {
+		fmt.Println("running .......")
 		if k.isClosed {
 			break
 		}
 		message, err := k.reader.FetchMessage(ctx)
 		if err != nil {
 			fmt.Println("error while fetching message", err)
+			callback(nil, err)
 			break
 		}
 		fmt.Printf("message at topic/partition/offset %v/%v/%v: %s = %s\n", message.Topic, message.Partition, message.Offset, string(message.Key), string(message.Value))
+		callback(messageconfig.NewMessageConsumer(ctx, &message, k.reader), nil)
 	}
 }
 

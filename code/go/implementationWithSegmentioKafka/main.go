@@ -8,6 +8,7 @@ import (
 
 	"github.com/Maniabhishek/Kafka/apis"
 	"github.com/Maniabhishek/Kafka/internal/services"
+	"github.com/Maniabhishek/Kafka/messageconfig"
 	"github.com/Maniabhishek/Kafka/messaging"
 	"github.com/joho/godotenv"
 	"github.com/labstack/echo/v4"
@@ -59,11 +60,21 @@ func ProduceMessage() {
 func ConsumeMessage() {
 	fmt.Println("running....")
 	consumerClient := messaging.NewKafkaClientFactory()
-	cc, err := consumerClient.NewConsumer("user-group", "user")
+	cc, err := consumerClient.NewConsumer("user-group-2", "user")
 
 	if err != nil {
 		fmt.Println("err", err)
 	}
 
-	cc.FetchMessage()
+	cc.FetchMessage(ProcessMessage)
+}
+
+func ProcessMessage(message messageconfig.EventMessage, err error) ([]byte, error) {
+	defer message.CommitMessage()
+	topic := message.GetTopic()
+	payload := message.GetPayload()
+	key := message.GetKey()
+	fmt.Println("::::::::::::::::::::::::::message consumed:::::::::::::::::::::::::::::")
+	fmt.Println(topic, string(payload), string(key))
+	return nil, nil
 }

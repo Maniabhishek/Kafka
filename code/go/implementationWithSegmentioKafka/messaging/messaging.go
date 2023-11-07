@@ -6,7 +6,7 @@ import (
 )
 
 type IConsumer interface {
-	FetchMessage()
+	FetchMessage(callback func(messageconfig.EventMessage, error) ([]byte, error))
 	Close()
 }
 
