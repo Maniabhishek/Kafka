@@ -1,4 +1,4 @@
-package main
+package messaging
 
 import (
 	"github.com/Maniabhishek/Kafka/kafkaclient"

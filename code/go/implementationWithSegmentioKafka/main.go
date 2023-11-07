@@ -2,8 +2,15 @@ package main
 
 import (
 	"fmt"
+	"os"
+	"os/signal"
+	"syscall"
 
+	"github.com/Maniabhishek/Kafka/apis"
+	"github.com/Maniabhishek/Kafka/internal/services"
+	"github.com/Maniabhishek/Kafka/messaging"
 	"github.com/joho/godotenv"
+	"github.com/labstack/echo/v4"
 )
 
 func main() {
@@ -11,14 +18,28 @@ func main() {
 	if err := godotenv.Load(); err != nil {
 		panic(err)
 	}
-	ProduceMessage()
-	ConsumeMessage()
 
-	fmt.Println(":::::::::::::::::::end:::::::::::::::::::::")
+	go func() {
+		mfactory := messaging.NewKafkaClientFactory()
+
+		mservices := services.NewMessageService(mfactory)
+
+		mcontroller := apis.NewMessageController(mservices)
+
+		e := echo.New()
+		e.POST("/sendmessage", mcontroller.SendKafkaMessage)
+		e.Logger.Fatal(e.Start(":1234"))
+	}()
+
+	go ConsumeMessage()
+
+	stopC := make(chan os.Signal, 1)
+	signal.Notify(stopC, syscall.SIGINT, syscall.SIGTERM, syscall.SIGHUP)
+	<-stopC
 }
 
 func ProduceMessage() {
-	kafkaClient := NewKafkaClientFactory()
+	kafkaClient := messaging.NewKafkaClientFactory()
 
 	producer, err := kafkaClient.NewProducer("user")
 
@@ -36,7 +57,8 @@ func ProduceMessage() {
 }
 
 func ConsumeMessage() {
-	consumerClient := NewKafkaClientFactory()
+	fmt.Println("running....")
+	consumerClient := messaging.NewKafkaClientFactory()
 	cc, err := consumerClient.NewConsumer("user-group", "user")
 
 	if err != nil {
