@@ -1,10 +1,12 @@
 package main
 
 import (
+	"context"
 	"fmt"
 	"os"
 	"os/signal"
 	"syscall"
+	"time"
 
 	"github.com/Maniabhishek/Kafka/apis"
 	"github.com/Maniabhishek/Kafka/internal/services"
@@ -20,6 +22,7 @@ func main() {
 		panic(err)
 	}
 
+	e := echo.New()
 	go func() {
 		mfactory := messaging.NewKafkaClientFactory()
 
@@ -27,7 +30,6 @@ func main() {
 
 		mcontroller := apis.NewMessageController(mservices)
 
-		e := echo.New()
 		e.POST("/sendmessage", mcontroller.SendKafkaMessage)
 		e.Logger.Fatal(e.Start(":1234"))
 	}()
@@ -37,6 +39,12 @@ func main() {
 	stopC := make(chan os.Signal, 1)
 	signal.Notify(stopC, syscall.SIGINT, syscall.SIGTERM, syscall.SIGHUP)
 	<-stopC
+
+	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	defer cancel()
+	if err := e.Shutdown(ctx); err != nil {
+		e.Logger.Fatal(err)
+	}
 }
 
 func ProduceMessage() {
